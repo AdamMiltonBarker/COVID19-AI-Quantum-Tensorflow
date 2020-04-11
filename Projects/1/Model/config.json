@@ -1,0 +1,11 @@
+{
+    "cnn": {
+        "core": [
+            "Train",
+            "Classify"
+        ],
+        "data": {},
+        "model": {},
+        "train": {}
+    }
+}
