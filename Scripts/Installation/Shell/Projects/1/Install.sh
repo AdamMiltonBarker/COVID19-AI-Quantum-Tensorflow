@@ -8,13 +8,13 @@ if [ "$cmsg" = "Y" -o "$cmsg" = "y" ]; then
 
     echo "- Installing COVID-19 AI Quantum Tensorflow Project 1"
 
-    sh Scripts/Installation/Shell/Project-1/Python.sh
+    sh Scripts/Installation/Shell/Projects/1/Python.sh
     if [ $? -ne 0 ]; then
         echo $FMSG;
         exit
     fi
 
-    sh Scripts/Installation/Shell/Project-1/Data.sh
+    sh Scripts/Installation/Shell/Projects/1/Data.sh
     if [ $? -ne 0 ]; then
         echo $FMSG;
         exit

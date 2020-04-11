@@ -17,7 +17,7 @@ Here you will find all of the required setup steps to get all required packages 
 You can follow the installation steps manually on this page, or you can use the "quick install" scripts provided. To do a quick install, navigate to the project root and use the following command:
 
 ```
-sh Scripts/Installation/Shell/Project-1/Install.sh
+sh Scripts/Installation/Shell/Projects/1/Install.sh
 ```
 
 &nbsp;
