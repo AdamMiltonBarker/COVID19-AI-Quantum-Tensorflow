@@ -2,7 +2,7 @@
 
 ## COVID-19 AI Quantum Tensorflow
 
-### Leveraging Quantum MNIST to detect COVID-19.
+### Leveraging Quantum MNIST to detect COVID-19
 
 [![GeniSysAI Server](../../Media/Images/covid-19-ai-research-qtf.png)](https://github.com/COVID-19-AI-Research-Project/COVID19-AI-Quantum-Tensorflow)
 
@@ -10,12 +10,17 @@
 ![GeniSysAI Server](../../Media/Images/Quantum-MNIST.png)
 In this project we will leverage [Tensorflow Quantum](https://www.tensorflow.org/quantum "Tensorflow Quantum") [MNIST Classification](https://www.tensorflow.org/quantum/tutorials/mnist "MNIST Classification") code and modify the network to detect COVID-19.
 
-## Installation
-Please follow the [Installation Guide](../../Documentation/Installation/Installation.md "Installation Guide") to install COVID-19 AI Quantum Tensorflow.
+&nbsp;
+
+# Tensorflow Quantum
+
+"TensorFlow Quantum (TFQ) is a quantum machine learning library for rapid prototyping of hybrid quantum-classical ML models. Research in quantum algorithms and applications can leverage Google’s quantum computing frameworks, all from within TensorFlow.
+
+TensorFlow Quantum focuses on quantum data and building hybrid quantum-classical models. It integrates quantum computing algorithms and logic designed in Cirq, and provides quantum computing primitives compatible with existing TensorFlow APIs, along with high-performance quantum circuit simulators. Read more in the TensorFlow Quantum white paper." [Source](https://www.tensorflow.org/quantum "Source")
 
 &nbsp;
 
-# COVID-19 RADIOGRAPHY DATABASE
+# COVID-19 Radiography Database
 
 "A team of researchers from Qatar University, Doha, Qatar and the University of Dhaka, Bangladesh along with their collaborators from Pakistan and Malaysia in collaboration with medical doctors have created a database of chest X-ray images for COVID-19 positive cases along with Normal and Viral Pneumonia images. In our current release, there are 219 COVID-19 positive images, 1341 normal images and 1345 viral pneumonia images. We will continue to update this database as soon as we have new x-ray images for COVID-19 pneumonia patients." [Source](https://www.kaggle.com/tawsifurrahman/covid19-radiography-database/data "Source")
 
@@ -23,12 +28,8 @@ In our project we will use the COVID-19 positive xrays dataset, and the normal x
 
 &nbsp;
 
-# Tensorflow Quantum
-![GeniSysAI Server](../../Media/Images/tensorflow-quantum.jpg)
-
-"TensorFlow Quantum (TFQ) is a quantum machine learning library for rapid prototyping of hybrid quantum-classical ML models. Research in quantum algorithms and applications can leverage Google’s quantum computing frameworks, all from within TensorFlow.
-
-TensorFlow Quantum focuses on quantum data and building hybrid quantum-classical models. It integrates quantum computing algorithms and logic designed in Cirq, and provides quantum computing primitives compatible with existing TensorFlow APIs, along with high-performance quantum circuit simulators. Read more in the TensorFlow Quantum white paper." [Source](https://www.tensorflow.org/quantum "Source")
+# Installation
+Please follow the [COVID-19 AI Quantum Tensorflow Installation Guide](../../Documentation/Installation/Installation.md "COVID-19 AI Quantum Tensorflow Installation Guide") to install COVID-19 AI Quantum Tensorflow, and finally the [COVID-19 AI Quantum Tensorflow Project 1 Installation Guide](../../Documentation/Installation/Project-1.md "COVID-19 AI Quantum Tensorflow Project 1 Installation Guide").
 
 &nbsp;
 

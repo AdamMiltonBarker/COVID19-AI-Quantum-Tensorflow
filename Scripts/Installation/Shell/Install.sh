@@ -14,6 +14,8 @@ if [ "$cmsg" = "Y" -o "$cmsg" = "y" ]; then
         exit
     fi
 
+    echo "!COVID-19 AI Quantum Tensorflow installation complete!"
+
 else
     echo $FMSG;
     exit

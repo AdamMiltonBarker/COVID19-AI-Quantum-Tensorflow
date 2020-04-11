@@ -25,16 +25,18 @@ TensorFlow Quantum focuses on quantum data and building hybrid quantum-classical
 
 &nbsp;
 
-# COVID-19 AI Quantum Tensorflow Installation
-Please follow the [Installation Guide](Documentation/Installation/Installation.md "Installation Guide") to install COVID-19 AI Quantum Tensorflow 0.1.0.
+# Installation
+Please follow the [Installation Guide](Documentation/Installation/Installation.md "Installation Guide") to install COVID-19 AI Quantum Tensorflow. Each project shown below may have it's own additional installation guide.
 
 &nbsp;
 
 # COVID-19 AI Quantum Tensorflow Projects
 
-Below are the current projects:
+Below are the current projects.
 
-- [Leveraging Quantum MNIST to detect COVID-19](Projects/1 "Leveraging Quantum MNIST to detect COVID-19")
+|ID | Project | Description | Author |
+|---|---------|-------------|--------|
+| 1 | [Leveraging Quantum MNIST to detect COVID-19](Projects/1 "Leveraging Quantum MNIST to detect COVID-19") | A COVID-19 classification project based on the [Tensorflow Quantum](https://www.tensorflow.org/quantum "Tensorflow Quantum") [MNIST Classification](https://www.tensorflow.org/quantum/tutorials/mnist "MNIST Classification") | [Adam Milton-Barker](https://www.leukemiaresearchassociation.ai/team/adam-milton-barker "Adam Milton-Barker") |
 
 &nbsp;
 
