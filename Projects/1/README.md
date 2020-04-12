@@ -99,7 +99,7 @@ First the data will be prepared.
 ```
 &nbsp;
 
-# Start adding some of that Quantumness
+### Start adding some of that Quantumness
 Now we are starting to get to the interesting part! It is time to introduce some Quantum magic! In the Classification with Quantum Neural Networks on Near Term Processors paper, Farhi et al proposed that each pixel would be represented by a Qubit.
 
 You can find the code for this part of the tutorial in the [Projects/1/Classes/QMNIST.py](Projects/1/Classes/QMNIST.py "Projects/1/Classes/QMNIST.py") file.
