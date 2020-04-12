@@ -19,7 +19,6 @@ import sys
 from Classes.Helpers import Helpers
 from Classes.Data import Data
 from Classes.QMNIST import QMNIST
-from Classes.QModel import QModel
 
 class QMNISTCOVID19():
     """ QMNISTCOVID19

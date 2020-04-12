@@ -38,10 +38,14 @@ Developers from the Github community that would like to contribute to the develo
 # Tensorflow Quantum
 You will need to install [Tensorflow Quantum](https://www.tensorflow.org/quantum/install "Tensorflow Quantum") and [Cirq](https://cirq.readthedocs.io/en/stable/tutorial.html "Cirq"). Use the following commands to install the correct package of Tensorflow & Cirq.
 
+You also need to have CUDA etc installed. 
+
 ```
-pip install tensorflow==2.1.0
-pip install cirq==0.7.0
-pip install tensorflow-quantum
+pip3 install --upgrade pip
+pip3 install --user tensorflow==2.1.0
+pip3 install --user cirq==0.7.0
+pip3 install --user tensorflow-quantum
+pip3 install --user seaborn
 ```
 
 &nbsp;
