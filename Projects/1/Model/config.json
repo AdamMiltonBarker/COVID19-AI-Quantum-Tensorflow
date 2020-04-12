@@ -1,6 +1,9 @@
 {
     "qnn": {
-        "core": [
+        "core": {
+            "bin_threshold": 0.5
+        },
+        "params": [
             "Train",
             "Classify"
         ],

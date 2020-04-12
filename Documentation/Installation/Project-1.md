@@ -43,6 +43,8 @@ Assuming you have downloaded the [COVID-19 Radiography Database](https://www.kag
 
 These commands will copy 219 files from the **COVID-19** & **NORMAL** directories of the **COVID-19 Radiography Database** to the project training data folders, and then move 10 images from each class to the project testing data folder.
 
+You can find the code for this part of the tutorial in the [Projects/1/Classes/Data.py](https://www.kaggle.com/tawsifurrahman/covid19-radiography-database/data "Projects/1/Classes/Data.py") file.
+
 ```
 DFOLDER="COVID-19 Radiography Database"
 RDFOLDER="COVID19-AI-Quantum-Tensorflow/Projects/1/Data"

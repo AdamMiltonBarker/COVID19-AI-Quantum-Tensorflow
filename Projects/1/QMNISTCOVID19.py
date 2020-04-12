@@ -18,6 +18,7 @@ import sys
 
 from Classes.Helpers import Helpers
 from Classes.Data import Data
+from Classes.QMNIST import QMNIST
 
 class QMNISTCOVID19():
     """ QMNISTCOVID19
@@ -29,21 +30,25 @@ class QMNISTCOVID19():
         """ Initializes the class. """
 
         self.Helpers = Helpers("Core")
+        self.Data = Data()
+        self.QMNIST = QMNIST()
 
-        self.Helpers.logger.info("QMNISTCOVID19 QNN (Quantum Neural Network) initialization complete.")
+        self.Helpers.logger.info("QMNISTCOVID19 QNN initialization complete.")
 
     def do_data(self):
         """ Sorts the training data """
 
-        self.Data = Data()
         self.Data.get_paths_n_labels()
         self.Data.process_data()
 
     def do_train(self):
-        """ Creates & trains the model. """
-        print("TODO")
+        """ Creates & trains the QNN. """
 
-    def do_load(self):
+        X_train_bin, X_test_bin = self.QMNIST.encode_as_binary(self.Data.X_train, self.Data.X_test)
+        X_train_circ, X__test_circ = self.QMNIST.do_circuit_conversion(X_train_bin, X_test_bin)
+        self.QMNIST.create_circuit(X_train_circ[0])
+
+    def do_load_model(self):
         """ Loads the trained model """
         print("TODO")
 
@@ -58,7 +63,7 @@ def main():
     if len(sys.argv) < 2:
         print("You must provide an argument")
         exit()
-    elif sys.argv[1] not in QMNISTCOVID19.Helpers.confs["qnn"]["core"]:
+    elif sys.argv[1] not in QMNISTCOVID19.Helpers.confs["qnn"]["params"]:
         print("Mode not supported! Train or Classify")
         exit()
 

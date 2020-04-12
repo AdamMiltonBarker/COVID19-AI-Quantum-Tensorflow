@@ -31,7 +31,7 @@ from Classes.OpenCV import OpenCV
 class Data():
     """ Data Helper Class
 
-    Data functions for the Leveraging Quantum MNIST to detect COVID-19 QNN (Quantum Neural Network),
+    Data functions for the Leveraging Quantum MNIST to detect COVID-19 QNN (Quantum Neural Network).
     """
 
     def __init__(self):
@@ -100,7 +100,7 @@ class Data():
 
         self.data = np.array(self.data)
 
-        self.Helpers.logger.info("Data shape: " + str(self.data.shape))
+        self.Helpers.logger.info("Converted data shape: " + str(self.data.shape))
 
     def encode_labels(self):
         """ One Hot Encodes the labels. """
@@ -110,13 +110,16 @@ class Data():
         self.labels = np.reshape(self.labels, (-1, 1))
         self.labels = encoder.fit_transform(self.labels).toarray()
 
-        self.Helpers.logger.info("Labels shape: " + str(self.labels.shape))
+        self.Helpers.logger.info("Encoded labels shape: " + str(self.labels.shape))
 
     def get_split(self):
         """ Splits the data and labels creating training and validation datasets. """
 
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
             self.data, self.labels, test_size=0.255, random_state=self.seed)
+
+        self.X_train, self.X_test = self.X_train[..., np.newaxis]/255.0, self.X_test[..., np.newaxis]/255.0
+        self.y_train, self.y_test = self.y_train[..., np.newaxis]/255.0, self.y_test[..., np.newaxis]/255.0
 
         self.Helpers.logger.info("Training data: " + str(self.X_train.shape))
         self.Helpers.logger.info("Training labels: " + str(self.y_train.shape))

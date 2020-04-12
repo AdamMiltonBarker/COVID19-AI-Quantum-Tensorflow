@@ -82,19 +82,35 @@ This tells the classifier to start in Train mode which will start the model trai
 First the data will be prepared.
 
 ```
-2020-04-12 02:30:27,183 - Core - INFO - Helpers class initialization complete.
-2020-04-12 02:30:27,183 - Core - INFO - QMNISTCOVID19 QNN (Quantum Neural Network) initialization complete.
-2020-04-12 02:30:27,183 - OpenCV - INFO - OpenCV Helper Class initialization complete.
-2020-04-12 02:30:27,183 - Data - INFO - Data Helper Class initialization complete.
-2020-04-12 02:30:27,184 - Data - INFO - Data Paths: 418
-2020-04-12 02:30:31,789 - Data - INFO - Data shuffled
-2020-04-12 02:30:31,789 - Data - INFO - Data shape: (418, 4, 4, 3)
-2020-04-12 02:30:31,790 - Data - INFO - Labels shape: (418, 2)
-2020-04-12 02:30:31,790 - Data - INFO - Labels: (418, 2)
-2020-04-12 02:30:31,790 - Data - INFO - Training data: (311, 4, 4, 3)
-2020-04-12 02:30:31,791 - Data - INFO - Training labels: (311, 2)
-2020-04-12 02:30:31,791 - Data - INFO - Validation data: (107, 4, 4, 3)
-2020-04-12 02:30:31,791 - Data - INFO - Validation labels: (107, 2)
+2020-04-12 05:13:34,928 - Core - INFO - Helpers class initialization complete.
+2020-04-12 05:13:34,929 - OpenCV - INFO - OpenCV Helper Class initialization complete.
+2020-04-12 05:13:34,929 - Data - INFO - Data Helper Class initialization complete.
+2020-04-12 05:13:34,930 - QMNIST - INFO - QMNIST Helper Class initialization complete.
+2020-04-12 05:13:34,930 - Core - INFO - QMNISTCOVID19 QNN initialization complete.
+2020-04-12 05:13:34,932 - Data - INFO - Data Paths: 418
+2020-04-12 05:13:39,592 - Data - INFO - Data shuffled
+2020-04-12 05:13:39,593 - Data - INFO - Converted data shape: (418, 4, 4, 3)
+2020-04-12 05:13:39,594 - Data - INFO - Encoded labels shape: (418, 2)
+2020-04-12 05:13:39,594 - Data - INFO - Labels: (418, 2)
+2020-04-12 05:13:39,594 - Data - INFO - Training data: (311, 4, 4, 3, 1)
+2020-04-12 05:13:39,594 - Data - INFO - Training labels: (311, 2, 1)
+2020-04-12 05:13:39,594 - Data - INFO - Validation data: (107, 4, 4, 3, 1)
+2020-04-12 05:13:39,595 - Data - INFO - Validation labels: (107, 2, 1)
+```
+&nbsp;
+
+# Start adding some of that Quantumness
+Now we are starting to get to the interesting part! It is time to introduce some Quantum magic! In the Classification with Quantum Neural Networks on Near Term Processors paper, Farhi et al proposed that each pixel would be represented by a Qubit.
+
+You can find the code for this part of the tutorial in the [Projects/1/Classes/QMNIST.py](Projects/1/Classes/QMNIST.py "Projects/1/Classes/QMNIST.py") file.
+
+First the data is converted to a binary encoding, then each pixel in each mage is converted into a Qubit, then finally we create a Circ SVG Circuit.
+
+```
+2020-04-12 05:13:39,595 - QMNIST - INFO - Data converted to binary encoding!
+2020-04-12 05:13:39,605 - QMNIST - INFO - Data pixels converted to Qubits!
+2020-04-12 05:13:39,605 - QMNIST - INFO - Circ SVG Circuit created!
+2020-04-12 05:13:39,605 - QMNIST - INFO - Converted Cirq circuits to TFQ tensors!
 ```
 
 &nbsp;
