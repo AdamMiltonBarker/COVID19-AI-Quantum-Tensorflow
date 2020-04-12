@@ -46,7 +46,10 @@ class QMNISTCOVID19():
 
         X_train_bin, X_test_bin = self.QMNIST.encode_as_binary(self.Data.X_train, self.Data.X_test)
         X_train_circ, X__test_circ = self.QMNIST.do_circuit_conversion(X_train_bin, X_test_bin)
+
         self.QMNIST.create_circuit(X_train_circ[0])
+
+        x_train_tfcirc, x_test_tfcirc = self.QMNIST.convert_to_tensors(X_train_circ, X__test_circ)
 
     def do_load_model(self):
         """ Loads the trained model """

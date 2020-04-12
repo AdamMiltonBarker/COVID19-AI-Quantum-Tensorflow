@@ -7,10 +7,11 @@ read -p "? This script will install Tensorflow Quantum on your device. Are you r
 if [ "$cmsg" = "Y" -o "$cmsg" = "y" ]; then
 
     echo "- GeniSysAI installing Tensorflow Quantum"
-
-    pip install tensorflow==2.1.0
-    pip install cirq==0.7.0
-    pip install tensorflow-quantum
+    
+    pip3 install --upgrade pip
+    pip3 install tensorflow==2.1.0
+    pip3 install cirq==0.7.0
+    pip3 install tensorflow-quantum
 
     exit 0
 

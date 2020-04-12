@@ -109,7 +109,7 @@ class QMNIST():
 
         self.Helpers.logger.info("Circ SVG Circuit created!")
 
-    def create_circuit(self, x_train_circ, x_test_circ):
+    def convert_to_tensors(self, x_train_circ, x_test_circ):
         """ Converts Cirq circuits to TFQ tensors.
 
         CREDIT: https://www.tensorflow.org/quantum/tutorials/mnist
@@ -120,4 +120,6 @@ class QMNIST():
         x_test_tfcirc = tfq.convert_to_tensor(x_test_circ)
 
         self.Helpers.logger.info("Converted Cirq circuits to TFQ tensors!")
+
+        return x_train_tfcirc, x_test_tfcirc
 

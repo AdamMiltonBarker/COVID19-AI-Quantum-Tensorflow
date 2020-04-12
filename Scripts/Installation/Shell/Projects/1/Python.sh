@@ -4,14 +4,14 @@ read -p "? This script will install the COVID-19 AI Quantum Tensorflow Project 1
 
 if [ "$cmsg" = "Y" -o "$cmsg" = "y" ]; then
     echo "- COVID-19 AI Quantum Tensorflow Project 1 Python dependencies installing"
-    pip install opencv-python
-    pip install matplotlib
-    pip install numpy
-    pip install scipy
-    pip install Pillow
-    pip install jsonpickle
-    pip install scikit-learn
-    pip install scikit-image
+    pip3 install opencv-python
+    pip3 install matplotlib
+    pip3 install numpy
+    pip3 install scipy
+    pip3 install Pillow
+    pip3 install jsonpickle
+    pip3 install scikit-learn
+    pip3 install scikit-image
     echo "- COVID-19 AI Quantum Tensorflow Project 1 Python dependencies installed";
     exit 0
 else
