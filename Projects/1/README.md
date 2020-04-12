@@ -97,7 +97,6 @@ First the data will be prepared.
 2020-04-12 05:13:39,594 - Data - INFO - Validation data: (107, 4, 4, 3, 1)
 2020-04-12 05:13:39,595 - Data - INFO - Validation labels: (107, 2, 1)
 ```
-&nbsp;
 
 ### Start adding some of that Quantumness
 Now we are starting to get to the interesting part! It is time to introduce some Quantum magic! In the Classification with Quantum Neural Networks on Near Term Processors paper, Farhi et al proposed that each pixel would be represented by a Qubit.
