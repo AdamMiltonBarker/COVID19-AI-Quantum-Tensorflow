@@ -7,8 +7,8 @@
 # Author:        Adam Milton-Barker (AdamMiltonBarker.com)
 # Contributors:
 # Title:         Helper Class
-# Description:   Helper functions for the Leveraging Quantum MNIST to
-#                detect COVID-19 project.
+# Description:   Helper functions for the Leveraging Quantum MNIST to detect COVID-19 QNN
+#                (Quantum Neural Network).
 # License:       MIT License
 # Last Modified: 2020-04-11
 #
@@ -25,7 +25,7 @@ from datetime import datetime
 
 class Helpers():
     """ Helper Class
-    Helper functions for the Leveraging Quantum MNIST to detect COVID-19 project.
+    Helper functions for the Leveraging Quantum MNIST to detect COVID-19 QNN (Quantum Neural Network).
     """
 
     def __init__(self, ltype, log=True):

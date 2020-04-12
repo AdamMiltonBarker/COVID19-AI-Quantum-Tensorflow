@@ -1,10 +1,17 @@
 {
-    "cnn": {
+    "qnn": {
         "core": [
             "Train",
             "Classify"
         ],
-        "data": {},
+        "data": {
+            "allowed": [".png"],
+            "dir": "Data",
+            "dir_test": "Data/Test",
+            "dir_train": "Data/Train",
+            "dim": 4,
+            "seed": 2
+        },
         "model": {},
         "train": {}
     }

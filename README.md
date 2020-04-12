@@ -36,7 +36,7 @@ Below are the current projects.
 
 |ID | Project | Description | Author |
 |---|---------|-------------|--------|
-| 1 | [Leveraging Quantum MNIST to detect COVID-19](Projects/1 "Leveraging Quantum MNIST to detect COVID-19") | A COVID-19 classification project based on the [Tensorflow Quantum](https://www.tensorflow.org/quantum "Tensorflow Quantum") [MNIST Classification](https://www.tensorflow.org/quantum/tutorials/mnist "MNIST Classification") | [Adam Milton-Barker](https://www.leukemiaresearchassociation.ai/team/adam-milton-barker "Adam Milton-Barker") |
+| 1 | [Leveraging Quantum MNIST to detect COVID-19](Projects/1 "Leveraging Quantum MNIST to detect COVID-19") | A COVID-19 QNN (Quantum Neural Network) classification project based on the [Tensorflow Quantum](https://www.tensorflow.org/quantum "Tensorflow Quantum") [MNIST Classification](https://www.tensorflow.org/quantum/tutorials/mnist "MNIST Classification") | [Adam Milton-Barker](https://www.leukemiaresearchassociation.ai/team/adam-milton-barker "Adam Milton-Barker") |
 
 &nbsp;
 

@@ -7,7 +7,8 @@
 # Author:        Adam Milton-Barker (AdamMiltonBarker.com)
 # Contributors:
 # Title:         QMNISTCOVID19
-# Description:   QMNISTCOVID19 is a wrapper class that creates the COVID-19 Quantum Classifer.
+# Description:   QMNISTCOVID19 is a wrapper class that creates the COVID-19 COVID-19
+#                Tensorflow QNN (Quantum Neural Network).
 # License:       MIT License
 # Last Modified: 2020-04-11
 #
@@ -16,11 +17,12 @@
 import sys
 
 from Classes.Helpers import Helpers
+from Classes.Data import Data
 
 class QMNISTCOVID19():
     """ QMNISTCOVID19
 
-    QMNISTCOVID19 is a wrapper class that creates the COVID-19 Quantum Classifer.
+    QMNISTCOVID19 is a wrapper class that creates the COVID-19 Tensorflow QNN (Quantum Neural Network).
     """
 
     def __init__(self):
@@ -28,11 +30,14 @@ class QMNISTCOVID19():
 
         self.Helpers = Helpers("Core")
 
-        self.Helpers.logger.info("QMNISTCOVID19 CNN initialization complete.")
+        self.Helpers.logger.info("QMNISTCOVID19 QNN (Quantum Neural Network) initialization complete.")
 
     def do_data(self):
         """ Sorts the training data """
-        print("TODO")
+
+        self.Data = Data()
+        self.Data.get_paths_n_labels()
+        self.Data.process_data()
 
     def do_train(self):
         """ Creates & trains the model. """
@@ -53,7 +58,7 @@ def main():
     if len(sys.argv) < 2:
         print("You must provide an argument")
         exit()
-    elif sys.argv[1] not in QMNISTCOVID19.Helpers.confs["cnn"]["core"]:
+    elif sys.argv[1] not in QMNISTCOVID19.Helpers.confs["qnn"]["core"]:
         print("Mode not supported! Train or Classify")
         exit()
 
@@ -61,6 +66,7 @@ def main():
 
     if mode == "Train":
         """ Creates and trains the classifier """
+        QMNISTCOVID19.do_data()
         QMNISTCOVID19.do_train()
 
     elif mode == "Classify":

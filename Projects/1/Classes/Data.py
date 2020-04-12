@@ -1,0 +1,124 @@
+############################################################################################
+#
+# Project:       Peter Moss COVID-19 AI Research Project
+# Repository:    COVID-19 AI Quantum Tensorflow
+# Project:       Leveraging Quantum MNIST to detect COVID-19
+#
+# Author:        Adam Milton-Barker (AdamMiltonBarker.com)
+# Contributors:
+# Title:         Data Helper Class
+# Description:   Data functions for the Leveraging Quantum MNIST to detect COVID-19 QNN
+#                (Quantum Neural Network).
+# License:       MIT License
+# Last Modified: 2020-04-12
+#
+############################################################################################
+
+import os, random
+
+import numpy as np
+
+from random import seed as rseed
+from numpy.random import seed as nseed
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.utils import shuffle as skshuffle
+
+from Classes.Helpers import Helpers
+from Classes.OpenCV import OpenCV
+
+class Data():
+    """ Data Helper Class
+
+    Data functions for the Leveraging Quantum MNIST to detect COVID-19 QNN (Quantum Neural Network),
+    """
+
+    def __init__(self):
+        """ Initializes the class. """
+
+        self.Helpers = Helpers("Data", False)
+        self.OpenCV = OpenCV()
+
+        self.dim = self.Helpers.confs["qnn"]["data"]["dim"]
+        self.dir_train = self.Helpers.confs["qnn"]["data"]["dir_train"]
+        self.seed = self.Helpers.confs["qnn"]["data"]["seed"]
+
+        nseed(self.seed)
+        rseed(self.seed)
+
+        self.data = []
+        self.labels = []
+        self.paths = []
+
+        self.Helpers.logger.info("Data Helper Class initialization complete.")
+
+    def get_paths_n_labels(self):
+        """ Stores data paths and labels as a list of tuples. """
+
+        for ddir in os.listdir(self.dir_train):
+            tpath = os.path.join(self.dir_train, ddir)
+            if os.path.isdir(tpath):
+                for filename in os.listdir(tpath):
+                    if filename.lower().endswith(tuple(self.Helpers.confs["qnn"]["data"]["allowed"])):
+                        self.paths.append((os.path.join(tpath, filename), ddir))
+                    else:
+                        continue
+
+        self.Helpers.logger.info("Data Paths: " + str(len(self.paths)))
+
+    def process_data(self):
+        """ Processes the data. """
+
+        for tdata in self.paths:
+            (image, label) = (tdata[0], tdata[1])
+            image = self.OpenCV.resize(image, self.dim)
+
+            if image.shape[2] == 1:
+                image = np.dstack([image, image, image])
+
+            self.data.append(image)
+            self.labels.append(label)
+
+        self.shuffle()
+        self.convert_data()
+        self.encode_labels()
+
+        self.Helpers.logger.info("Labels: " + str(self.labels.shape))
+
+        self.get_split()
+
+    def shuffle(self):
+        """ Shuffles the data and labels. """
+
+        self.data, self.labels = skshuffle(self.data, self.labels, random_state=self.seed)
+
+        self.Helpers.logger.info("Data shuffled")
+
+    def convert_data(self):
+        """ Converts the training data to a numpy array. """
+
+        self.data = np.array(self.data)
+
+        self.Helpers.logger.info("Data shape: " + str(self.data.shape))
+
+    def encode_labels(self):
+        """ One Hot Encodes the labels. """
+
+        encoder = OneHotEncoder(categories='auto')
+
+        self.labels = np.reshape(self.labels, (-1, 1))
+        self.labels = encoder.fit_transform(self.labels).toarray()
+
+        self.Helpers.logger.info("Labels shape: " + str(self.labels.shape))
+
+    def get_split(self):
+        """ Splits the data and labels creating training and validation datasets. """
+
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
+            self.data, self.labels, test_size=0.255, random_state=self.seed)
+
+        self.Helpers.logger.info("Training data: " + str(self.X_train.shape))
+        self.Helpers.logger.info("Training labels: " + str(self.y_train.shape))
+        self.Helpers.logger.info("Validation data: " + str(self.X_test.shape))
+        self.Helpers.logger.info("Validation labels: " + str(self.y_test.shape))
