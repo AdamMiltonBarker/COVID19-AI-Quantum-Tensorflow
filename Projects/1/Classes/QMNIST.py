@@ -23,12 +23,8 @@ import tensorflow as tf
 import tensorflow_quantum as tfq
 import matplotlib.pyplot as plt
 import numpy as np
-import seaborn as sns
-
-from cirq.contrib.svg import SVGCircuit
 
 from Classes.Helpers import Helpers
-
 
 class QMNIST():
     """ QMNIST Helper Class
@@ -36,6 +32,7 @@ class QMNIST():
     QMNIST functions for the Leveraging Quantum MNIST to detect COVID-19 QNN (Quantum Neural Network).
 
     CREDIT: https://www.tensorflow.org/quantum/tutorials/mnist
+    CREDIT: https://arxiv.org/pdf/1802.06002.pdf
     """
 
     def __init__(self):
@@ -43,10 +40,17 @@ class QMNIST():
 
         self.Helpers = Helpers("QMNIST", False)
 
-        self.bthreshold = self.Helpers.confs["qnn"]["data"]["seed"]
+        self.bthreshold = self.Helpers.confs["qnn"]["core"]["bin_threshold"]
         self.dim = self.Helpers.confs["qnn"]["data"]["dim"]
 
         self.Helpers.logger.info("QMNIST Helper Class initialization complete.")
+        
+    def tf_imresize(self, x_train, x_test):
+        
+        x_train_small = tf.image.resize(x_train, (self.dim, self.dim)).numpy()
+        x_test_small = tf.image.resize(x_test, (self.dim, self.dim)).numpy()
+        
+        return x_train_small, x_test_small
 
     def encode_as_binary(self, x_train, x_test):
         """ Converts to a binary encoding.
@@ -76,6 +80,7 @@ class QMNIST():
         CREDIT: https://www.tensorflow.org/quantum/tutorials/mnist
         CREDIT: https://arxiv.org/pdf/1802.06002.pdf
         """
+        
         values = np.ndarray.flatten(image)
         qubits = cirq.GridQubit.rect(self.dim, self.dim)
         circuit = cirq.Circuit()
@@ -97,17 +102,6 @@ class QMNIST():
         self.Helpers.logger.info("Data pixels converted to Qubits!")
 
         return X__train_circ, X__test_circ
-
-    def create_circuit(self, x_train_circ):
-        """ Creates a Circ SVG Circuit.
-
-        CREDIT: https://www.tensorflow.org/quantum/tutorials/mnist
-        CREDIT: https://arxiv.org/pdf/1802.06002.pdf
-        """
-
-        SVGCircuit(x_train_circ)
-
-        self.Helpers.logger.info("Circ SVG Circuit created!")
 
     def convert_to_tensors(self, x_train_circ, x_test_circ):
         """ Converts Cirq circuits to TFQ tensors.

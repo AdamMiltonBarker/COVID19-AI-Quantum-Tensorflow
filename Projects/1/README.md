@@ -72,7 +72,7 @@ Ensuring you have completed all previous steps, you can start training using the
 
 ```
 cd Projects/1/
-python QMNISTCOVID19.py Train
+python3 QMNISTCOVID19.py Train
 ```
 
 This tells the classifier to start in Train mode which will start the model training process.

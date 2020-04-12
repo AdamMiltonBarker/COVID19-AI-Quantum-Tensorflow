@@ -17,6 +17,7 @@
 import os, random
 
 import numpy as np
+import tensorflow as tf
 
 from random import seed as rseed
 from numpy.random import seed as nseed
@@ -24,9 +25,9 @@ from numpy.random import seed as nseed
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.utils import shuffle as skshuffle
+import matplotlib.pyplot as plt
 
 from Classes.Helpers import Helpers
-from Classes.OpenCV import OpenCV
 
 class Data():
     """ Data Helper Class
@@ -38,7 +39,6 @@ class Data():
         """ Initializes the class. """
 
         self.Helpers = Helpers("Data", False)
-        self.OpenCV = OpenCV()
 
         self.dim = self.Helpers.confs["qnn"]["data"]["dim"]
         self.dir_train = self.Helpers.confs["qnn"]["data"]["dir_train"]
@@ -72,10 +72,12 @@ class Data():
 
         for tdata in self.paths:
             (image, label) = (tdata[0], tdata[1])
-            image = self.OpenCV.resize(image, self.dim)
-
-            if image.shape[2] == 1:
-                image = np.dstack([image, image, image])
+            
+            image_string = tf.io.read_file(image)
+            image_decoded = tf.image.decode_png(image_string, channels=3)
+            image = tf.cast(image_decoded, tf.float32)
+            image = tf.image.resize(image, [4, 4])
+            image = tf.image.rgb_to_grayscale(image)
 
             self.data.append(image)
             self.labels.append(label)
@@ -83,15 +85,12 @@ class Data():
         self.shuffle()
         self.convert_data()
         self.encode_labels()
-
-        self.Helpers.logger.info("Labels: " + str(self.labels.shape))
-
         self.get_split()
 
     def shuffle(self):
         """ Shuffles the data and labels. """
 
-        self.data, self.labels = skshuffle(self.data, self.labels, random_state=self.seed)
+        self.data, self.labels = skshuffle(self.data, self.labels, random_state = self.seed)
 
         self.Helpers.logger.info("Data shuffled")
 
@@ -114,13 +113,12 @@ class Data():
 
     def get_split(self):
         """ Splits the data and labels creating training and validation datasets. """
-
+        
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
-            self.data, self.labels, test_size=0.255, random_state=self.seed)
+            self.data, self.labels, test_size=0.255, random_state = self.seed)
 
         self.X_train, self.X_test = self.X_train[..., np.newaxis]/255.0, self.X_test[..., np.newaxis]/255.0
-        self.y_train, self.y_test = self.y_train[..., np.newaxis]/255.0, self.y_test[..., np.newaxis]/255.0
-
+        
         self.Helpers.logger.info("Training data: " + str(self.X_train.shape))
         self.Helpers.logger.info("Training labels: " + str(self.y_train.shape))
         self.Helpers.logger.info("Validation data: " + str(self.X_test.shape))
